@@ -92,7 +92,6 @@
       align-items: center;
       text-align: center;
       padding: 48px 0 52px;
-      border-bottom: 1px solid var(--border);
       margin-bottom: 52px;
       animation: fadeUp 0.5s ease both;
     }
@@ -403,8 +402,8 @@
   <!-- STICKY COMPACT HEADER -->
   <div class="sticky-header" id="sticky-header">
     <div class="sticky-avatar">
-      <img src="https://avatars.githubusercontent.com/u/gabroboh?v=4" alt="Gabriele Borroni"
-           onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 36 36%22><circle cx=%2218%22 cy=%2218%22 r=%2218%22 fill=%22%231a56db%22/><text x=%2218%22 y=%2224%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2216%22 font-family=%22Arial%22 font-weight=%22600%22>GB</text></svg>'"/>
+      <img src="immagine_del_profilo.jpg" alt="Gabriele Borroni"
+           onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-size:14px;font-weight:700;font-family:Arial\'>GB</div>'"/>
     </div>
     <div>
       <div class="sticky-name">Gabriele Borroni</div>
@@ -473,7 +472,7 @@
         <div>
           <div class="exp-date"><span data-lang="it">Nov 2025 — Oggi</span><span data-lang="en">Nov 2025 — Present</span></div>
           <div class="exp-company">
-            <a href="https://www.alternanet.it" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/alternanet.it" class="company-logo" alt="Alterna" onerror="this.style.display='none'"/>Alterna — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <a href="https://www.alternanet.it" target="_blank" rel="noopener">Alterna — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             <span class="ms-partner" title="Microsoft Partner"><svg width="12" height="12" viewBox="0 0 21 21"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></span>
           </div>
         </div>
@@ -494,7 +493,7 @@
         <div>
           <div class="exp-date"><span data-lang="it">Gen 2022 — Nov 2025</span><span data-lang="en">Jan 2022 — Nov 2025</span></div>
           <div class="exp-company">
-            <a href="https://www.agic.it" target="_blank" rel="noopener"><img src="https://logo.clearbit.com/agic.it" class="company-logo" alt="AGIC" onerror="this.style.display='none'"/>AGIC — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <a href="https://www.agic.it" target="_blank" rel="noopener">AGIC — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             <span class="ms-partner" title="Microsoft Partner"><svg width="12" height="12" viewBox="0 0 21 21"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></span>
           </div>
         </div>
@@ -545,7 +544,7 @@
       <div class="edu-item">
         <div>
           <div class="exp-date">2016 — 2021</div>
-          <div class="exp-company"><img src="https://logo.clearbit.com/unitus.it" class="company-logo" alt="Unitus" onerror="this.style.display='none'"/><span data-lang="it">Univ. della Tuscia</span><span data-lang="en">Univ. of Tuscia</span></div>
+          <div class="exp-company"><span data-lang="it">Univ. della Tuscia</span><span data-lang="en">Univ. of Tuscia</span></div>
         </div>
         <div>
           <div class="edu-degree"><span data-lang="it">Laurea in Comunicazione, Tecnologie e Cultura Digitale</span><span data-lang="en">Bachelor's in Communication, Technologies and Digital Culture</span></div>
@@ -575,35 +574,35 @@
         <div class="cert-group-label">Microsoft</div>
         <div class="cert-grid">
           <a class="cert-card" href="https://learn.microsoft.com/api/credentials/share/it-it/28423794/F38736F14FA9BEC7?sharingId=1E7969B883EA8A76" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><img src="https://images.credly.com/size/340x340/images/be8fcaeb-c769-4858-b567-ffaaa73ce8cf/image.png" alt="AZ-900" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">AZ<br>900</div></div>
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="AZ-900" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">AZ<br>900</div></div>
             <div class="cert-code">AZ-900</div>
             <div class="cert-name">Azure Fundamentals</div>
             <div class="cert-issuer">Microsoft</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Verifica</span><span data-lang="en">Verify</span></div>
           </a>
           <a class="cert-card" href="https://learn.microsoft.com/api/credentials/share/it-it/28423794/E01970D67527D9F7?sharingId=1E7969B883EA8A76" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><img src="https://images.credly.com/size/340x340/images/336eebfc-0ac3-4553-9a67-b402f491f185/azure-administrator-associate-600x600.png" alt="AZ-104" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">AZ<br>104</div></div>
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="AZ-104" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">AZ<br>104</div></div>
             <div class="cert-code">AZ-104</div>
             <div class="cert-name">Azure Administrator Associate</div>
             <div class="cert-issuer">Microsoft</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Verifica</span><span data-lang="en">Verify</span></div>
           </a>
           <a class="cert-card" href="https://learn.microsoft.com/api/credentials/share/it-it/28423794/6EA1E00CC71E9EC1?sharingId=1E7969B883EA8A76" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><img src="https://images.credly.com/size/340x340/images/f3d946b7-c50d-4a6e-89e2-71e3e0a87c68/microsoft-365-teams-administrator-associate-600x600.png" alt="MS-700" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">MS<br>700</div></div>
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="MS-700" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">MS<br>700</div></div>
             <div class="cert-code">MS-700</div>
             <div class="cert-name">Teams Administrator Associate</div>
             <div class="cert-issuer">Microsoft</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Verifica</span><span data-lang="en">Verify</span></div>
           </a>
           <a class="cert-card" href="https://learn.microsoft.com/api/credentials/share/it-it/28423794/9FE53852B442E7A8?sharingId=1E7969B883EA8A76" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><img src="https://images.credly.com/size/340x340/images/4fc5e2e5-1a32-4f60-b2dd-87de66ca3fe3/microsoft-power-platform-fundamentals-600x600.png" alt="PL-900" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">PL<br>900</div></div>
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="PL-900" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">PL<br>900</div></div>
             <div class="cert-code">PL-900</div>
             <div class="cert-name">Power Platform Fundamentals</div>
             <div class="cert-issuer">Microsoft</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Verifica</span><span data-lang="en">Verify</span></div>
           </a>
           <a class="cert-card" href="https://learn.microsoft.com/it-it/credentials/certifications/exams/az-800/" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><div class="cert-badge-placeholder" style="display:flex;background:#dbeafe;color:#1a56db">AZ<br>800</div></div>
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/certification-exam.svg" alt="AZ-800" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:linear-gradient(135deg,#1a56db,#1e40af);color:white;font-size:13px;font-weight:800">AZ<br>800</div></div>
             <div class="cert-code">AZ-800</div>
             <div class="cert-name">Windows Server Hybrid Core Infrastructure</div>
             <div class="cert-issuer">Microsoft</div>
@@ -631,14 +630,20 @@
         <div class="cert-group-label">Anthropic</div>
         <div class="cert-grid">
           <a class="cert-card" href="https://verify.skilljar.com/c/ifhmqbihmax7" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><div class="cert-badge-placeholder" style="display:flex;background:#f0fdf4;color:#166534;font-size:13px;font-weight:800">Claude<br>101</div></div>
+            <div class="cert-badge-wrap"><div class="cert-badge-placeholder" style="display:flex;background:#000;color:#fff;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017L3.674 20H0L6.57 3.52zm4.132 9.959L8.453 7.687 6.205 13.479h4.496z"/></svg>
+              <span style="font-size:9px;font-weight:700;letter-spacing:0.05em">CLAUDE 101</span>
+            </div></div>
             <div class="cert-code">Anthropic</div>
             <div class="cert-name">Claude 101</div>
             <div class="cert-issuer">Anthropic Education</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Verifica</span><span data-lang="en">Verify</span></div>
           </a>
           <a class="cert-card" href="https://verify.skilljar.com/c/sdjnweocf2t2" target="_blank" rel="noopener">
-            <div class="cert-badge-wrap"><div class="cert-badge-placeholder" style="display:flex;background:#f0fdf4;color:#166534;font-size:11px;font-weight:800;text-align:center;line-height:1.3">AI<br>Fluency</div></div>
+            <div class="cert-badge-wrap"><div class="cert-badge-placeholder" style="display:flex;background:#000;color:#fff;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.258 0h3.767L16.906 20h-3.674l-1.343-3.461H5.017L3.674 20H0L6.57 3.52zm4.132 9.959L8.453 7.687 6.205 13.479h4.496z"/></svg>
+              <span style="font-size:8px;font-weight:700;letter-spacing:0.03em;text-align:center">AI FLUENCY</span>
+            </div></div>
             <div class="cert-code">Anthropic</div>
             <div class="cert-name">AI Fluency: Framework &amp; Foundations</div>
             <div class="cert-issuer">Anthropic Education</div>
@@ -653,7 +658,7 @@
       <p class="section-label"><span data-lang="it">Volontariato</span><span data-lang="en">Volunteering</span></p>
       <div class="vol-item">
         <div>
-          <div class="exp-company"><img src="https://logo.clearbit.com/avis.it" class="company-logo" alt="AVIS" onerror="this.style.display='none'"/>AVIS</div>
+          <div class="exp-company">AVIS</div>
         </div>
         <div>
           <div class="vol-role"><span data-lang="it">Donatore Volontario di Sangue</span><span data-lang="en">Voluntary Blood Donor</span></div>
@@ -667,7 +672,7 @@
       <p class="section-label"><span data-lang="it">Formazione &amp; Interessi</span><span data-lang="en">Training &amp; Interests</span></p>
       <div class="vol-item">
         <div>
-          <div class="exp-company"><img src="https://logo.clearbit.com/aisomm.it" class="company-logo" alt="AIS" onerror="this.style.display='none'"/>AIS</div>
+          <div class="exp-company">AIS</div>
         </div>
         <div>
           <div class="vol-role"><span data-lang="it">Sommelier di 3° livello</span><span data-lang="en">3rd Level Sommelier</span></div>
