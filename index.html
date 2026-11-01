@@ -116,12 +116,13 @@
 
     /* Avatar large (hero state) */
     .avatar-wrap {
-      width: 110px;
-      height: 110px;
+      width: 116px;
+      height: 116px;
       border-radius: 50%;
       overflow: hidden;
-      margin-bottom: 20px;
-      border: 3px solid var(--border);
+      margin-bottom: 22px;
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 1px var(--border), 0 8px 24px rgba(20,20,20,0.08);
       flex-shrink: 0;
       transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
     }
@@ -171,7 +172,9 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 99;
-      background: var(--bg);
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      backdrop-filter: saturate(1.4) blur(10px);
       border-bottom: 1px solid var(--border);
       padding: 10px 28px;
       display: flex;
@@ -210,8 +213,18 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px 20px;
+      gap: 8px;
     }
+    .contact-row > * {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 13px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .contact-row > *:hover { border-color: var(--accent); }
+    .email-display svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .cta-row { display: flex; justify-content: center; margin-top: 18px; }
     .contact-item {
       display: inline-flex;
       align-items: center;
@@ -290,13 +303,13 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      margin-top: 20px;
       background: var(--accent);
       color: #fff;
-      border-radius: 20px;
-      padding: 8px 20px;
+      border-radius: 999px;
+      padding: 9px 22px;
       font-family: inherit;
       font-size: 12.5px;
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 28%, transparent);
       font-weight: 500;
       letter-spacing: 0.04em;
       cursor: pointer;
@@ -305,7 +318,7 @@
     }
     .download-btn:hover { opacity: 0.88; transform: translateY(-1px); }
     .download-btn svg { width: 14px; height: 14px; }
-    .exp-role { font-size: 17px; font-weight: 600; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.01em; }
+    .exp-role { font-size: 16.5px; font-weight: 600; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.01em; }
     .exp-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.75; }
     .exp-desc ul { list-style: none; }
     .exp-desc li { padding-left: 16px; position: relative; margin-bottom: 5px; }
@@ -344,7 +357,7 @@
     .cert-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 18px 12px 12px;
       display: flex;
       flex-direction: column;
@@ -364,6 +377,9 @@
     .cert-issuer { font-size: 10.5px; color: var(--text-muted); }
     .cert-verify { font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 3px; margin-top: auto; padding-top: 4px; }
     .cert-verify svg { width: 10px; height: 10px; }
+    .cert-card.in-progress { border-style: dashed; background: transparent; }
+    .cert-card.in-progress .cert-badge-wrap { opacity: 0.55; filter: grayscale(0.4); }
+    .cert-status { margin-top: auto; font-size: 10px; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 1px 9px; }
 
     /* ── VOLUNTEERING ── */
     .vol-item {
@@ -391,6 +407,15 @@
       gap: 8px;
     }
 
+    .foot-sign { display: inline-flex; align-items: center; gap: 8px; }
+    .foot-sign .dot { opacity: 0.5; }
+    .eu-flag { width: 24px; height: 16px; display: block; border-radius: 2.5px; box-shadow: 0 0 0 1px rgba(0,0,0,0.06); }
+    footer { justify-content: center; }
+    a:focus-visible, button:focus-visible, .email-display:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -402,6 +427,8 @@
       .cert-grid { grid-template-columns: repeat(2, 1fr); }
       footer { flex-direction: column; text-align: center; }
       .topbar { padding: 12px 16px; }
+      .sticky-header { padding: 10px 160px 10px 16px; }
+      .sticky-role { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     }
 
     /* ── LANG ── */
@@ -413,6 +440,7 @@
     html[lang="en"] li[data-lang="it"] { display: none; }
     span[data-lang="it"] { display: inline; }
     li[data-lang="en"] { display: none; }
+    html[lang="en"] a.download-btn[data-lang="en"] { display: inline-flex; }
   </style>
 </head>
 <body>
@@ -455,13 +483,13 @@
         <h1>Gabriele Borroni</h1>
         <p class="tagline">
           <span data-lang="it">Esploro il mondo con la stessa curiosità con cui esploro la tecnologia, appassionato di cultura digitale e di tutto ciò che connette gli esseri umani tra loro.</span>
-          <span data-lang="en">I explore the world with the same curiosity I bring to technology — passionate about digital culture and everything that connects people.</span>
+          <span data-lang="en">I explore the world with the same curiosity I bring to technology, passionate about digital culture and everything that connects people.</span>
         </p>
       </div>
       <div class="contact-row">
-        <span class="email-display" onclick="revealEmail(this)" title="Clicca per visualizzare l'email">
+        <span class="email-display" role="button" tabindex="0" onclick="revealEmail(this)" onkeydown="if(event.key==='Enter'){revealEmail(this)}" title="Clicca per visualizzare l'email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3,5 12,13 21,5"/></svg>
-          <span id="email-text">info[at]gabrieleborroni[dot]it</span>
+          <span id="email-text">me[at]gabrieleborroni[dot]it</span>
         </span>
         <a href="https://www.gabrieleborroni.it" target="_blank" class="contact-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18"/></svg>
@@ -471,15 +499,17 @@
           <svg viewBox="0 0 24 24" width="16" height="16"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.2 9.6H4.8V19.2H7.2V9.6ZM6 8.4C5.34 8.4 4.8 7.86 4.8 7.2C4.8 6.54 5.34 6 6 6C6.66 6 7.2 6.54 7.2 7.2C7.2 7.86 6.66 8.4 6 8.4ZM19.2 19.2H16.8V14.4C16.8 13.08 16.2 12.6 15.3 12.6C14.34 12.6 13.56 13.38 13.56 14.46V19.2H11.16V9.6H13.44V10.68C13.92 9.9 14.88 9.42 15.96 9.42C17.88 9.42 19.2 10.62 19.2 13.08V19.2Z" fill="white"/></svg>
           LinkedIn
         </a>
-        <span class="contact-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-8-5.5-8-11a8 8 0 0 1 16 0c0 5.5-8 11-8 11z"/><circle cx="12" cy="10" r="3"/></svg>
-          Roma, Italia
-        </span>
       </div>
-      <a href="CV_Gabriele_Borroni.pdf" download class="download-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-lang="it">Scarica CV</span><span data-lang="en">Download CV</span>
-      </a>
+      <div class="cta-row">
+        <a href="CV_Gabriele_Borroni.pdf" download="CV_Gabriele_Borroni.pdf" class="download-btn" data-lang="it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Scarica CV
+        </a>
+        <a href="CV_Gabriele_Borroni_EN.pdf" download="CV_Gabriele_Borroni_EN.pdf" class="download-btn" data-lang="en">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+      </div>
     </header>
 
     <!-- EXPERIENCE -->
@@ -488,9 +518,9 @@
 
       <div class="exp-item">
         <div>
-          <div class="exp-date"><span data-lang="it">Nov 2025 — Oggi</span><span data-lang="en">Nov 2025 — Present</span></div>
+          <div class="exp-date"><span data-lang="it">Nov 2025 – Oggi</span><span data-lang="en">Nov 2025 – Present</span></div>
           <div class="exp-company">
-            <a href="https://www.alternanet.it" target="_blank" rel="noopener">Alterna — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <a href="https://www.alternanet.it" target="_blank" rel="noopener">Alterna, Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             <span class="ms-partner" title="Microsoft Partner"><svg width="12" height="12" viewBox="0 0 21 21"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></span>
           </div>
         </div>
@@ -509,9 +539,9 @@
 
       <div class="exp-item">
         <div>
-          <div class="exp-date"><span data-lang="it">Gen 2022 — Nov 2025</span><span data-lang="en">Jan 2022 — Nov 2025</span></div>
+          <div class="exp-date"><span data-lang="it">Gen 2022 – Nov 2025</span><span data-lang="en">Jan 2022 – Nov 2025</span></div>
           <div class="exp-company">
-            <a href="https://www.agic.it" target="_blank" rel="noopener">AGIC — Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            <a href="https://www.agic.it" target="_blank" rel="noopener">AGIC, Roma <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             <span class="ms-partner" title="Microsoft Partner"><svg width="12" height="12" viewBox="0 0 21 21"><rect x="0" y="0" width="10" height="10" fill="#F25022"/><rect x="11" y="0" width="10" height="10" fill="#7FBA00"/><rect x="0" y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg></span>
           </div>
         </div>
@@ -538,8 +568,8 @@
 
       <div class="exp-item">
         <div>
-          <div class="exp-date"><span data-lang="it">Giu 2021 — Gen 2022</span><span data-lang="en">Jun 2021 — Jan 2022</span></div>
-          <div class="exp-company">Vetrya spa — Orvieto</div>
+          <div class="exp-date"><span data-lang="it">Giu 2021 – Gen 2022</span><span data-lang="en">Jun 2021 – Jan 2022</span></div>
+          <div class="exp-company">Vetrya spa, Orvieto</div>
         </div>
         <div>
           <div class="exp-role">Managed Services Specialist</div>
@@ -561,24 +591,24 @@
 
       <div class="edu-item">
         <div>
-          <div class="exp-date">2016 — 2021</div>
+          <div class="exp-date">2016 – 2021</div>
           <div class="exp-company"><a href="https://www.unitus.it" target="_blank" rel="noopener"><span data-lang="it">Univ. della Tuscia</span><span data-lang="en">Univ. of Tuscia</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:9px;height:9px;opacity:0.7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
         </div>
         <div>
           <div class="edu-degree"><span data-lang="it">Laurea in Comunicazione, Tecnologie e Cultura Digitale</span><span data-lang="en">Bachelor's in Communication, Technologies and Digital Culture</span></div>
-          <div class="edu-school"><span data-lang="it">Università degli Studi della Tuscia — Viterbo</span><span data-lang="en">University of Tuscia — Viterbo, Italy</span></div>
+          <div class="edu-school"><span data-lang="it">Università degli Studi della Tuscia, Viterbo</span><span data-lang="en">University of Tuscia, Viterbo, Italy</span></div>
           <span class="edu-grade">100 / 110</span>
         </div>
       </div>
 
       <div class="edu-item">
         <div>
-          <div class="exp-date">2008 — 2015</div>
+          <div class="exp-date">2008 – 2015</div>
           <div class="exp-company">I.T. Fratelli Agosti</div>
         </div>
         <div>
-          <div class="edu-degree"><span data-lang="it">Diploma in Agraria — Viticoltura ed Enologia</span><span data-lang="en">Technical Diploma — Viticulture and Oenology</span></div>
-          <div class="edu-school"><span data-lang="it">Istituto Tecnico Fratelli Agosti — Bagnoregio, VT</span><span data-lang="en">Fratelli Agosti Technical Institute — Bagnoregio, VT</span></div>
+          <div class="edu-degree"><span data-lang="it">Diploma in Agraria, Viticoltura ed Enologia</span><span data-lang="en">Technical Diploma, Viticulture and Oenology</span></div>
+          <div class="edu-school"><span data-lang="it">Istituto Tecnico Fratelli Agosti, Bagnoregio (VT)</span><span data-lang="en">Fratelli Agosti Technical Institute, Bagnoregio (VT)</span></div>
         </div>
       </div>
     </section>
@@ -625,6 +655,13 @@
             <div class="cert-name">Windows Server Hybrid Core Infrastructure</div>
             <div class="cert-issuer">Microsoft</div>
             <div class="cert-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span data-lang="it">Dettagli</span><span data-lang="en">Details</span></div>
+          </a>
+          <a class="cert-card in-progress" href="https://learn.microsoft.com/it-it/credentials/certifications/ai-services-administrator-associate/" target="_blank" rel="noopener">
+            <div class="cert-badge-wrap"><img src="https://learn.microsoft.com/it-it/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="AB-650" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="cert-badge-placeholder" style="display:none;background:#dbeafe;color:#1a56db">AB<br>650</div></div>
+            <div class="cert-code">AB-650</div>
+            <div class="cert-name">Microsoft 365 and AI Services Administrator Associate</div>
+            <div class="cert-issuer">Microsoft</div>
+            <div class="cert-status"><span data-lang="it">In corso</span><span data-lang="en">In progress</span></div>
           </a>
         </div>
       </div>
@@ -681,7 +718,7 @@
           <div class="exp-company"><a href="https://enricodiviziani.com" target="_blank" rel="noopener">Enrico Diviziani <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:9px;height:9px;opacity:0.7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
         </div>
         <div>
-          <div class="exp-role">Web Developer - Enrico Diviziani | <span data-lang="it">Fotografo di Matrimoni</span><span data-lang="en">Wedding Photographer</span></div>
+          <div class="exp-role">Web Developer · Enrico Diviziani | <span data-lang="it">Fotografo di Matrimoni</span><span data-lang="en">Wedding Photographer</span></div>
           <div class="exp-desc">
             <p data-lang="it">Progettazione e sviluppo da zero su piattaforma WordPress con tema Luminis ed Elementor. Gestione dominio, posta elettronica, ottimizzazione SEO e indicizzazione dei contenuti tramite Rank Math.</p>
             <p data-lang="en">Design and development from scratch on WordPress with Luminis theme and Elementor. Domain and email management, SEO optimization and content indexing via Rank Math.</p>
@@ -695,7 +732,7 @@
           <div class="exp-company"><a href="https://casettamadonnadimorciano.com" target="_blank" rel="noopener">Casetta Madonna di Morciano <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:9px;height:9px;opacity:0.7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
         </div>
         <div>
-          <div class="exp-role">Web Developer - Casetta Madonna di Morciano | <span data-lang="it">Casa Vacanze</span><span data-lang="en">Holiday Home</span></div>
+          <div class="exp-role">Web Developer · Casetta Madonna di Morciano | <span data-lang="it">Casa Vacanze</span><span data-lang="en">Holiday Home</span></div>
           <div class="exp-desc">
             <p data-lang="it">Progettazione e sviluppo da zero su piattaforma WordPress con tema Phlox Pro ed Elementor. Implementazione form di prenotazione personalizzato con notifica via email. Gestione dominio, posta elettronica, ottimizzazione SEO e indicizzazione dei contenuti tramite Rank Math.</p>
             <p data-lang="en">Design and development from scratch on WordPress with Phlox Pro theme and Elementor. Implementation of a custom booking form with email notification. Domain and email management, SEO optimization and content indexing via Rank Math.</p>
@@ -734,8 +771,7 @@
     </section>
 
     <footer>
-      <span>© <span id="year"></span> Gabriele Borroni</span>
-      <span>Roma, Italia</span>
+      <span class="foot-sign"><span>© <span id="year"></span> Gabriele Borroni</span><span class="dot">·</span><svg class="eu-flag" viewBox="0 0 30 20" role="img" aria-label="European Union"><title>European Union</title><rect width="30" height="20" rx="2.5" fill="#003399"/><defs><polygon id="eus" fill="#FFCC00" points="0,-1 0.225,-0.309 0.951,-0.309 0.363,0.118 0.588,0.809 0,0.382 -0.588,0.809 -0.363,0.118 -0.951,-0.309 -0.225,-0.309"/></defs><use href="#eus" transform="translate(15,4) scale(1.15)"/><use href="#eus" transform="translate(18,4.8) scale(1.15)"/><use href="#eus" transform="translate(20.2,7) scale(1.15)"/><use href="#eus" transform="translate(21,10) scale(1.15)"/><use href="#eus" transform="translate(20.2,13) scale(1.15)"/><use href="#eus" transform="translate(18,15.2) scale(1.15)"/><use href="#eus" transform="translate(15,16) scale(1.15)"/><use href="#eus" transform="translate(12,15.2) scale(1.15)"/><use href="#eus" transform="translate(9.8,13) scale(1.15)"/><use href="#eus" transform="translate(9,10) scale(1.15)"/><use href="#eus" transform="translate(9.8,7) scale(1.15)"/><use href="#eus" transform="translate(12,4.8) scale(1.15)"/></svg></span>
     </footer>
 
   </div>
@@ -743,28 +779,44 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    function setLang(lang) {
+    function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+    function setLang(lang, save) {
       document.documentElement.lang = lang;
       document.getElementById('btn-it').classList.toggle('active', lang === 'it');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      if (save !== false) store('lang', lang);
     }
 
-    function toggleTheme() {
-      const html = document.documentElement;
-      const dark = html.getAttribute('data-theme') === 'dark';
-      html.setAttribute('data-theme', dark ? 'light' : 'dark');
-      document.getElementById('icon-moon').style.display = dark ? 'block' : 'none';
-      document.getElementById('icon-sun').style.display  = dark ? 'none'  : 'block';
+    function applyTheme(theme) {
+      const dark = theme === 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('icon-moon').style.display = dark ? 'none'  : 'block';
+      document.getElementById('icon-sun').style.display  = dark ? 'block' : 'none';
     }
+    function toggleTheme() {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      store('theme', next);
+    }
+
+    (function init() {
+      const lang = load('lang');
+      if (lang === 'it' || lang === 'en') setLang(lang, false);
+      const theme = load('theme');
+      if (theme === 'dark' || theme === 'light') applyTheme(theme);
+      else if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) applyTheme('dark');
+    })();
 
     let emailRevealed = false;
     function revealEmail(el) {
       if (!emailRevealed) {
-        document.getElementById('email-text').textContent = 'info@gabrieleborroni.it';
+        document.getElementById('email-text').textContent = 'me@gabrieleborroni.it';
         el.title = "Clicca per inviare un'email";
         emailRevealed = true;
       } else {
-        window.location.href = 'mailto:info@gabrieleborroni.it';
+        window.location.href = 'mailto:me@gabrieleborroni.it';
       }
     }
 
